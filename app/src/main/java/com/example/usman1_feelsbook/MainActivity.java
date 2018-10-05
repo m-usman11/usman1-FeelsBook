@@ -18,17 +18,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
+/**
+ * MainActivity responsible for the history, feelings count, and addition of feelings
+ */
 public class MainActivity extends AppCompatActivity {
 
-    // https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
-    // https://stackoverflow.com/questions/7873480/android-one-onclick-method-for-multiple-buttons
-    // https://stackoverflow.com/questions/3914404/how-to-get-current-moment-in-iso-8601-format-with-date-hour-and-minute
-    // https://www.youtube.com/watch?v=Vyqz_-sJGFk
-    // https://eclass.srv.ualberta.ca/pluginfile.php/4548736/mod_resource/content/4/File_Storage_in_Java_Notes.pdf
-    // http://www.codebind.com/java-tutorials/java-example-convert-date-string/
-
-    public static final String FILENAME = "file.sav";
+    private String FILENAME = "file.sav";
     private static ArrayList<Emotion> emotions = new ArrayList<>();
     public static Boolean modified = false;
     private EditText commentText;
@@ -39,31 +34,21 @@ public class MainActivity extends AppCompatActivity {
     private TextView loveCount, joyCount, sadCount, angryCount, surprisedCount, scaredCount;
     int lovec, joyc, sadc, angryc, surprisedc, scaredc;
 
-
-    public static Emotion getEmotionFromList(int num) {
-        return emotions.get(num);
-    }
-
-    public static void setOrKillEmotion(int num, Emotion emotion, Boolean set) {
-        if (set)
-            emotions.set(num, emotion);
-        else    // kill
-            emotions.remove(emotion);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (modified) {
+        if (modified) { // Boolean set by EditActivity --> Must push changes
             appendToFile();
             modified = false;
         }
-        loadFromFile();
+        loadFromFile(); // Load into list emotions
+
         commentText = findViewById(R.id.commentBox);
         history = findViewById(R.id.historyView);
 
+        // Layout manager to display RecyclerView list items
         histLayoutManager = new LinearLayoutManager(this);
         history.setLayoutManager(histLayoutManager);
     }
@@ -72,11 +57,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         clearComment();
+
+        // Set emotions list and adapter to RecyclerView history
         loadFromFile();
         adapter = new HistoryAdapter(emotions);
         history.setAdapter(adapter);
     }
 
+    /**
+     * Sets the TextViews underneath emotion images to the number of emotions in history
+     */
     private void countFeels() {
         lovec = joyc = sadc = angryc = surprisedc = scaredc = 0;
         loveCount = findViewById(R.id.loveCount);
@@ -115,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         scaredCount.setText(Integer.toString(scaredc));
     }
 
+    /**
+     * Load ArrayList emotions from memory, and re-count
+     */
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
@@ -128,10 +121,14 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         countFeels();
+        // Sort array from newest to oldest emotion
         Collections.sort(emotions);
         Collections.reverse(emotions);
     }
 
+    /**
+     * Store ArrayList emotions into memory, and re-count
+     */
     private void appendToFile() {
         try {
             FileOutputStream fos = openFileOutput(FILENAME,0);
@@ -145,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         countFeels();
+        // Sort array from newest to oldest emotion
         Collections.sort(emotions);
         Collections.reverse(emotions);
     }
@@ -157,9 +155,14 @@ public class MainActivity extends AppCompatActivity {
         commentText.setText("");
     }
 
+    /**
+     * Add a new Emotion object to ArrayList emotions
+     *
+     * @param view Emoji Button clicked
+     */
     public void addFeel(View view) {
         String comment = getCommentText();
-        clearComment();
+        clearComment(); // May be ""
         switch(view.getId()) {
             case R.id.loveButton:
                 emotions.add(0, new Love(comment));
@@ -184,5 +187,26 @@ public class MainActivity extends AppCompatActivity {
         appendToFile();
         Toast toast = Toast.makeText(getApplicationContext(), "Added Emotion!", Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    /**
+     * @param num index into ArrayList emotions
+     * @return Emotion object at param num
+     */
+    public static Emotion getEmotionFromList(int num) {
+        return emotions.get(num);
+    }
+
+    /**
+     *
+     * @param num index into ArrayList emotions
+     * @param emotion set=true: new emotion to replace, set=false: emotion to remove
+     * @param set set=true: modify, set=false: remove
+     */
+    public static void setOrKillEmotion(int num, Emotion emotion, Boolean set) {
+        if (set)
+            emotions.set(num, emotion);
+        else // kill
+            emotions.remove(emotion);
     }
 }

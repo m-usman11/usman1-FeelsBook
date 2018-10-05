@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * RecyclerView Adapter for the Emotions history
+ */
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     private ArrayList<Emotion> emotionList;
     public static final String EMOTIONKEY = "usman1Feelsbook_EmotionKey";
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView commentTextView;
         TextView dateTextView;
@@ -30,16 +29,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+    // Set the dataset emotionList
     public HistoryAdapter(ArrayList<Emotion> myDataset) {
         emotionList = myDataset;
     }
 
-    // Create new views (invoked by the layout manager)
+    // Create new views
     @Override
     public HistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
-        //create a new view
         View v = (View) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         ViewHolder vh = new ViewHolder(v);
