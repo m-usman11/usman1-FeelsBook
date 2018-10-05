@@ -7,11 +7,14 @@ FeelsBook lets you quickly record your feelings throughout the day, and displays
 ## Android Developers
 RecyclerView: https://developer.android.com/guide/topics/ui/layout/recyclerview
 
+Accessed October 3-4, 2018.
+
 ## Stack Overflow
 Ordering ArrayList by object value: https://stackoverflow.com/questions/5927109/sort-objects-in-arraylist-by-date by user Domchi: https://stackoverflow.com/users/29192/domchi
 Converting String to Date object: https://stackoverflow.com/questions/6510724/how-to-convert-java-string-to-date-object by user readikus: https://stackoverflow.com/users/1010468/readikus
 Function usage for multiple buttons: https://stackoverflow.com/questions/7873480/android-one-onclick-method-for-multiple-buttons by user user370305: https://stackoverflow.com/users/370305/user370305
 Getting current Date: https://stackoverflow.com/questions/3914404/how-to-get-current-moment-in-iso-8601-format-with-date-hour-and-minute by user Joachim Sauer: https://stackoverflow.com/users/40342/joachim-sauer
+
 All accessed October 3-4, 2018.
 
 ## YouTube:
