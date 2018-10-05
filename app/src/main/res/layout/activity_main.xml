@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/historyView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:focusableInTouchMode="false"
+        android:isScrollContainer="false"
+        android:windowSoftInputMode="adjustNothing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/commentBox"
+        android:layout_width="189dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginRight="97dp"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="@string/comment_hint"
+        android:inputType="textPersonName"
+        android:textSize="12sp"
+        android:visibility="visible"
+        android:windowSoftInputMode="adjustPan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyView" />
+
+    <ImageButton
+        android:id="@+id/loveButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="addFeel"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/joyButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentBox"
+        app:srcCompat="@drawable/love" />
+
+    <ImageButton
+        android:id="@+id/joyButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="addFeel"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/sadButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/loveButton"
+        app:layout_constraintTop_toBottomOf="@+id/commentBox"
+        app:srcCompat="@drawable/joy" />
+
+    <ImageButton
+        android:id="@+id/sadButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="addFeel"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/joyButton"
+        app:layout_constraintTop_toBottomOf="@+id/commentBox"
+        app:srcCompat="@drawable/sad" />
+
+    <ImageButton
+        android:id="@+id/angryButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="addFeel"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/surprisedButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loveButton"
+        app:srcCompat="@drawable/angry" />
+
+    <ImageButton
+        android:id="@+id/surprisedButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="addFeel"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/scaredButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/angryButton"
+        app:layout_constraintTop_toBottomOf="@+id/joyButton"
+        app:srcCompat="@drawable/surprised" />
+
+    <ImageButton
+        android:id="@+id/scaredButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:onClick="addFeel"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/surprisedButton"
+        app:layout_constraintTop_toBottomOf="@+id/sadButton"
+        app:srcCompat="@drawable/scared" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">usman1-FeelsBook</string>
+    <string name="comment_hint">Describe how you feel</string>
+    <string name="emotion_inst">Add your current emotion!</string>
+    <string name="hist_button">History</string>
+    <string name="return_button">Add</string>
+</resources>
