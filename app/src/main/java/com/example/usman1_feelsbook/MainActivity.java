@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView history;
     private HistoryAdapter adapter;
     private RecyclerView.LayoutManager histLayoutManager;
+
+    private TextView loveCount, joyCount, sadCount, angryCount, surprisedCount, scaredCount;
+    int lovec, joyc, sadc, angryc, surprisedc, scaredc;
 
 
     public static Emotion getEmotionFromList(int num) {
@@ -72,6 +77,44 @@ public class MainActivity extends AppCompatActivity {
         history.setAdapter(adapter);
     }
 
+    private void countFeels() {
+        lovec = joyc = sadc = angryc = surprisedc = scaredc = 0;
+        loveCount = findViewById(R.id.loveCount);
+        joyCount = findViewById(R.id.joyCount);
+        sadCount = findViewById(R.id.sadCount);
+        angryCount = findViewById(R.id.angryCount);
+        surprisedCount = findViewById(R.id.surprisedCount);
+        scaredCount = findViewById(R.id.scaredCount);
+        for (int i=0; i<emotions.size(); i++) {
+            switch(emotions.get(i).getImage()) {
+                case R.drawable.love:
+                    lovec++;
+                    break;
+                case R.drawable.joy:
+                    joyc++;
+                    break;
+                case R.drawable.sad:
+                    sadc++;
+                    break;
+                case R.drawable.angry:
+                    angryc++;
+                    break;
+                case R.drawable.surprised:
+                    surprisedc++;
+                    break;
+                case R.drawable.scared:
+                    scaredc++;
+                    break;
+            }
+        }
+        loveCount.setText(Integer.toString(lovec));
+        joyCount.setText(Integer.toString(joyc));
+        sadCount.setText(Integer.toString(sadc));
+        angryCount.setText(Integer.toString(angryc));
+        surprisedCount.setText(Integer.toString(surprisedc));
+        scaredCount.setText(Integer.toString(scaredc));
+    }
+
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
@@ -84,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        countFeels();
+        Collections.sort(emotions);
+        Collections.reverse(emotions);
     }
 
     private void appendToFile() {
@@ -98,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        countFeels();
+        Collections.sort(emotions);
+        Collections.reverse(emotions);
     }
 
     private String getCommentText() {

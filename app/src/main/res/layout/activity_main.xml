@@ -9,7 +9,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/historyView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="260dp"
         android:focusableInTouchMode="false"
         android:isScrollContainer="false"
         android:windowSoftInputMode="adjustNothing"
@@ -26,12 +26,13 @@
         android:layout_marginLeft="98dp"
         android:layout_marginRight="97dp"
         android:layout_marginStart="98dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/comment_hint"
         android:inputType="textPersonName"
         android:textSize="12sp"
         android:visibility="visible"
+        android:maxLength="100"
         android:windowSoftInputMode="adjustPan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
@@ -40,8 +41,8 @@
 
     <ImageButton
         android:id="@+id/loveButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -55,8 +56,8 @@
 
     <ImageButton
         android:id="@+id/joyButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -70,8 +71,8 @@
 
     <ImageButton
         android:id="@+id/sadButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="4dp"
         android:adjustViewBounds="true"
         android:background="@null"
@@ -85,9 +86,9 @@
 
     <ImageButton
         android:id="@+id/angryButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="addFeel"
@@ -95,14 +96,14 @@
         app:layout_constraintEnd_toStartOf="@+id/surprisedButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loveButton"
+        app:layout_constraintTop_toBottomOf="@+id/loveCount"
         app:srcCompat="@drawable/angry" />
 
     <ImageButton
         android:id="@+id/surprisedButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="addFeel"
@@ -110,14 +111,14 @@
         app:layout_constraintEnd_toStartOf="@+id/scaredButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/angryButton"
-        app:layout_constraintTop_toBottomOf="@+id/joyButton"
+        app:layout_constraintTop_toBottomOf="@+id/joyCount"
         app:srcCompat="@drawable/surprised" />
 
     <ImageButton
         android:id="@+id/scaredButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:onClick="addFeel"
@@ -125,7 +126,67 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/surprisedButton"
-        app:layout_constraintTop_toBottomOf="@+id/sadButton"
+        app:layout_constraintTop_toBottomOf="@+id/sadCount"
         app:srcCompat="@drawable/scared" />
+
+    <TextView
+        android:id="@+id/loveCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/joyCount"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loveButton" />
+
+    <TextView
+        android:id="@+id/joyCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/sadCount"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/loveCount"
+        app:layout_constraintTop_toBottomOf="@+id/joyButton" />
+
+    <TextView
+        android:id="@+id/sadCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/joyCount"
+        app:layout_constraintTop_toBottomOf="@+id/sadButton" />
+
+    <TextView
+        android:id="@+id/angryCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/surprisedCount"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/angryButton" />
+
+    <TextView
+        android:id="@+id/surprisedCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/scaredCount"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/angryCount"
+        app:layout_constraintTop_toBottomOf="@+id/surprisedButton" />
+
+    <TextView
+        android:id="@+id/scaredCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/surprisedCount"
+        app:layout_constraintTop_toBottomOf="@+id/scaredButton" />
 
 </android.support.constraint.ConstraintLayout>
