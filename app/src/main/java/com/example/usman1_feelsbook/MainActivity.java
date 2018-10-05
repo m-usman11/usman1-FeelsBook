@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager histLayoutManager;
 
     private TextView loveCount, joyCount, sadCount, angryCount, surprisedCount, scaredCount;
-    int lovec, joyc, sadc, angryc, surprisedc, scaredc;
+    private int lovec, joyc, sadc, angryc, surprisedc, scaredc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
